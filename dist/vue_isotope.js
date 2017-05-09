@@ -255,16 +255,19 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
     return isotopeComponent;
   }
 
-  if (typeof exports == "object") {
-    var _ = require("lodash"),
-        Isotope = require("isotope-layout");
-    module.exports = buildVueIsotope(_, Isotope);
-  } else if (typeof define == "function" && define.amd) {
-    define(['lodash', 'Isotope'], function (_, Isotope) {
-      return buildVueIsotope(_, Isotope);
-    });
-  } else if (window.Vue && window._ && window.Isotope) {
-    var isotope = buildVueIsotope(window._, window.Isotope);
+  //if (typeof exports == "object") {
+  //   var _ = require("lodash"), Isotope = require("isotope-layout");
+  //   module.exports = buildVueIsotope(_, Isotope);
+  // } else if (typeof define == "function" && define.amd) {
+  //   define(['lodash', 'Isotope'], function (_, Isotope) { return buildVueIsotope(_, Isotope); });
+  // } else if ((window.Vue) && (window._) && (window.Isotope)) {
+  //   var isotope = buildVueIsotope(window._, window.Isotope);
+  //   Vue.component('isotope', isotope)
+  // }
+
+  var install = function install(Vue) {
     Vue.component('isotope', isotope);
-  }
+  };
+
+  module.exports = install;
 })();
